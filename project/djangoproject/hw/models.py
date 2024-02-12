@@ -9,6 +9,11 @@ class Client(models.Model):
     register_date = models.DateTimeField(auto_now=True)
 
 
+    def __str__(self):
+        return f'Username: {self.name}, email: {self.email}, phone: 
+        {self.phone}, address: {self.address}'
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
