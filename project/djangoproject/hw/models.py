@@ -10,8 +10,7 @@ class Client(models.Model):
 
 
     def __str__(self):
-        return f'Username: {self.name}, email: {self.email}, phone: 
-        {self.phone}, address: {self.address}'
+        return f'Username: {self.name}, email: {self.email}, phone: {self.phone}, address: {self.address}'
 
 
 class Product(models.Model):
@@ -29,4 +28,8 @@ class Order(models.Model):
     register_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.register_date} - {self.product_id} - {self.cost}'
+        result = f"Order from {self.client.name} "
+        result += f"for {0 if self._state.adding else self.products.count()} products, "
+        result += f"total at {self.total_amount}. "
+        result += f"Order {'closed' if self.applied_date else 'is open.'}"
+        return result

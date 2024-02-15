@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from hw.models import Product, Client, Order
-from random import choice,randint
+from random import choice, randint
 
 
 class Command(BaseCommand):
